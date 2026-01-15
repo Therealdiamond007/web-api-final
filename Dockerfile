@@ -1,12 +1,10 @@
-FROM eclipse-temurin:21-jdk-alpine
-
+FROM gradle:8-jdk17 AS builder
 WORKDIR /app
-
 COPY . .
+RUN ./gradlew build -x test
 
-RUN apk add --no-cache gradle
-RUN gradle build -x test
-
+FROM openjdk:17
+WORKDIR /app
+COPY --from=builder /app/build/libs/*.jar app.jar
 EXPOSE 8080
-
-CMD ["java", "-jar", "build/libs/web-api-product-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
