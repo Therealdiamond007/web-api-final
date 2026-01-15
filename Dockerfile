@@ -1,10 +1,13 @@
-FROM gradle:8-jdk17 AS builder
-WORKDIR /app
-COPY . .
-RUN ./gradlew build -x test
+# Use OpenJDK 17
+FROM openjdk:17-jdk-slim
 
-FROM openjdk:17
 WORKDIR /app
-COPY --from=builder /app/build/libs/*.jar app.jar
+
+# Copy the built JAR
+COPY build/libs/web-api-product-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose port
 EXPOSE 8080
+
+# Run the app
 ENTRYPOINT ["java", "-jar", "app.jar"]
