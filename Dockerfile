@@ -4,7 +4,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN ./gradlew build -x test
+RUN apk add --no-cache gradle
+RUN gradle build -x test
 
 EXPOSE 8080
 
