@@ -14,7 +14,7 @@ import io.swagger.v3.oas.models.servers.Server;
 public class MyConfi implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**")
+		registry.addResourceHandler("/static/https://web-api-final-2.onrender.com")
 				.addResourceLocations("file:./myApp/static/");
 				//.addResourceLocation("file:/opt/myApp/static/")/ //for Linux
 				
