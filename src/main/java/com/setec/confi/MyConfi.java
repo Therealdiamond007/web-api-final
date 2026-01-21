@@ -24,7 +24,7 @@ public class MyConfi implements WebMvcConfigurer {
         // Explicitly define the server URL for Swagger UI API calls
     
         Server productionServer = new Server();
-        productionServer.setUrl("web-api-final-2.onrender.com");  //Input your domain name
+        productionServer.setUrl("https://web-api-final-2.onrender.com");  //Input your domain name
         productionServer.setDescription("Production Server");
 
         // You can add other servers (e.g., a local HTTP one for development)
